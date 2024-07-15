@@ -1,23 +1,31 @@
 package main
 
 import (
-    "fmt"
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
 )
 
 func main() {
     var tasks []string
-    var command string
+    // var command string
+    scanner := bufio.NewScanner(os.Stdin)
+
 
     for {
         fmt.Print("Enter a command (add/view/exit): ")
-        fmt.Scan(&command)
+        
+        scanner.Scan()
+        command := strings.TrimSpace(scanner.Text())
 
         switch command {
         case "add":
+            fmt.Print("Enter a task : ")
             var task string
-            fmt.Print("Enter a task: ")
-            fmt.Scan(&task)
-            tasks = append(tasks, task)
+            scanner.Scan()
+            task = strings.TrimSpace(scanner.Text())
+            tasks = append(tasks,task)
         case "view":
             fmt.Println("To-Do List:")
             for i, task := range tasks {
