@@ -23,7 +23,7 @@ func handleConnection(conn net.Conn) {
     // Get client name
     fmt.Fprintf(conn, "Enter your name: ")
     name,_:= reader.ReadString('\n')
-    name = name[:len(name)-1] // Remove newline character
+    name = name[1 :len(name)-1] // Remove newline character 
 
     // Add client to the map
     clients[conn] = Client{conn: conn, name: name}
@@ -77,3 +77,6 @@ func main() {
         go handleConnection(conn)
     }
 }
+
+
+
