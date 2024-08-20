@@ -1,0 +1,21 @@
+# Use the official Go image from the Docker Hub
+FROM golang:1.20
+
+# Set the Current Working Directory inside the container
+WORKDIR /app
+
+# Copy the local go.mod and go.sum files to the container
+COPY go.mod go.sum ./
+
+# Download dependencies. Dependencies will be cached if the go.mod and go.sum files are not changed
+RUN go mod download
+
+# Copy the rest of the application code to the container
+COPY . .
+
+# Build both server and client binaries
+RUN go build -o server Tcp_server.go
+RUN go build -o client client_server.go
+
+# By default, run the server binary
+CMD ["./server"]
