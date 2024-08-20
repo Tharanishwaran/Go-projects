@@ -1,29 +1,23 @@
 # Stage 1: Build the Go application
-FROM golang:1.20 AS builder
+FROM golang:1.23.0 AS builder
 
-# Set the working directory inside the container
 WORKDIR /app
 
-# Copy go.mod and go.sum files to the working directory
+# Copy go.mod and download dependencies
 COPY go.mod ./
-
-# Download Go modules
 RUN go mod download
 
-# Copy the rest of the application source code to the working directory
-COPY . .
-
-# Build the Go application
+# Copy the source code and build the application
+COPY . ./
 RUN go build -o tcp-server .
 
 # Stage 2: Create a minimal image to run the Go application
 FROM debian:bullseye-slim
 
-# Copy the built binary from the builder stage
-COPY --from=builder /app/tcp-server /tcp-server
+WORKDIR /app
 
-# Expose the port the application will run on
-EXPOSE 8080
+# Copy the compiled binary from the builder stage
+COPY --from=builder /app/tcp-server .
 
-# Define the command to run the application
-CMD ["/tcp-server"]
+# Command to run the application
+CMD ["./tcp-server"]
