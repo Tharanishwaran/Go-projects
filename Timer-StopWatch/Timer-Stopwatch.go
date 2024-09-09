@@ -22,7 +22,7 @@ func main() {
 	fmt.Scanf("%d", &duration)
 	startTimer(duration)
 	
-  }else if option == "B" {
+  } else if option == "B" {
 
    var command string
 	fmt.Print("Type 'start' to begin the stopwatch: ")

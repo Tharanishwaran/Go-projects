@@ -13,9 +13,13 @@ type APIHandler struct{}
 func (APIHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	log.Println("Received request:", r.Method, r.URL.Path)
 	// Write "hello world" to the response
-	fmt.Fprint(w, "hello world")
-	fmt.Fprint(w,"hello everyone")
-	fmt.Println("hi bro")
+	fmt.Fprint(w, "hello universe hi bro hi iron man")
+	fmt.Fprint(w, "hello everyone")
+	fmt.Fprint(w, "hi bro")
+	fmt.Fprint(w, " hi iron man captain america")
+	fmt.Fprint(w, " Updated picture")
+
+
 }
 
 func main() {
