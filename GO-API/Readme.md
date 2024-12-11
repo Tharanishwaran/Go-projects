@@ -1,19 +1,18 @@
-Movies API
+# Movies API
 
-This repository contains a simple RESTful API for managing a collection of movies, built using the Gin Web Framework in Go.
+This is a simple RESTful API built with [Gin Web Framework](https://github.com/gin-gonic/gin) in Go. It provides endpoints to manage a collection of movies, including retrieving, adding, checking out, and returning movies.
 
-Features
+## Features
 
-View All Movies: Retrieve a list of all available movies.
+- Retrieve all movies
+- Retrieve a movie by ID
+- Add a new movie
+- Check out a movie
+- Return a movie
 
-View a Movie by ID: Get details of a specific movie by its unique ID.
+## Prerequisites
 
-Add a New Movie: Add a new movie to the collection.
-
-Check Out a Movie: Decrease the quantity of a movie when checked out.
-
-Return a Movie: Increase the quantity of a movie when returned.
-
-Prerequisites
-
-Go installed (version 1.16 or higher).
+- Go installed on your system (Download from [golang.org](https://golang.org/))
+- `gin` package installed. Install it by running:
+  ```bash
+  go get -u github.com/gin-gonic/gin
